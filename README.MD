@@ -21,3 +21,15 @@ Drive to image: 0 (C:) (DL = 0x80)
 ```
 nasm -f bin -o imager.com imager.asm
 ```
+
+### To receive the image on a modern PC:
+
+Configure the port:
+```
+stty -F /dev/ttyUSB0 115200 cs8 -cstopb -parenb -ixon -ixoff -icrnl -onlcr -opost raw
+```
+
+Copy the incoming data into an image file:
+```
+cat /dev/ttyUSB0 > image.img
+```
